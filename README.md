@@ -1,56 +1,24 @@
-# Welcome to your Expo app 👋
+# Penny Wise Mobile App
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+AI-powered expense tracker and financial behavior coach built with Expo SDK 55, Expo Router, Firebase, Zustand, NativeWind, and Groq.
 
-## Get started
+## Setup
 
-1. Install dependencies
+1. Copy `.env.example` to `.env`.
+2. Create a Firebase project and enable Email/Password auth.
+3. Create Firestore in test mode for local development.
+4. Fill the Firebase `EXPO_PUBLIC_*` values.
+5. Create a Groq API key and set `GROQ_API_KEY`.
+6. Run `npm install`.
+7. Run `npx expo start --clear`.
 
-   ```bash
-   npm install
-   ```
+## Scripts
 
-2. Start the app
+- `npm run start` starts Expo.
+- `npm run test` runs unit tests.
+- `npm run typecheck` runs TypeScript.
+- `npm run lint` runs Expo lint.
 
-   ```bash
-   npx expo start
-   ```
+## Notes
 
-In the output, you'll find options to open the app in a
-
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
-
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
-
-```bash
-npm run reset-project
-```
-
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
-
-### Other setup steps
-
-- To set up ESLint for linting, run `npx expo lint`, or follow our guide on ["Using ESLint and Prettier"](https://docs.expo.dev/guides/using-eslint/)
-- If you'd like to set up unit testing, follow our guide on ["Unit Testing with Jest"](https://docs.expo.dev/develop/unit-testing/)
-- Learn more about the TypeScript setup in this template in our guide on ["Using TypeScript"](https://docs.expo.dev/guides/typescript/)
-
-## Learn more
-
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+Firebase credentials are required to sign in and reach onboarding. Groq credentials are required for live AI responses. Production calls are separated correctly: Firebase code lives under `src/lib/firebase`, and Groq requests go through `src/app/api/ai`.

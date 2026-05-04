@@ -1,0 +1,16 @@
+export const colors = {
+  bg: "#0A0B12",
+  card: "#11131C",
+  cardSoft: "rgba(255,255,255,0.05)",
+  border: "rgba(255,255,255,0.08)",
+  primaryText: "#FFFFFF",
+  secondaryText: "#8B8D98",
+  violet: "#8B5CF6",
+  indigo: "#6366F1",
+  cyan: "#06B6D4",
+  mint: "#34D399",
+  amber: "#FBBF24",
+  coral: "#FB7185",
+  black: "#000000",
+  tabBarBg: "rgba(17,19,28,0.94)",
+} as const;
