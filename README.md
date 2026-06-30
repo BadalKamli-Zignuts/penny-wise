@@ -2,6 +2,8 @@
 
 AI-powered expense tracker and financial behavior coach built with Expo SDK 55, Expo Router, Firebase, Zustand, NativeWind, and Groq.
 
+Video recording: https://drive.google.com/file/d/1uNAq11dzmxaTTpsB0UlompbUXTZKT6Bt/view?usp=sharing
+
 ## Setup
 
 1. Copy `.env.example` to `.env`.
