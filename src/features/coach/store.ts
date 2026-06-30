@@ -1,5 +1,6 @@
 import { create } from "zustand";
 
+import { askLumenAction } from "./actions";
 import type { BudgetWithSpending } from "../budgets/types";
 import type { Expense } from "../expenses/types";
 import { buildCoachContext } from "./context";
@@ -40,6 +41,15 @@ export const useCoachStore = create<CoachState>((set) => ({
     set((state) => ({ messages: [...state.messages, userMessage], pending: true, error: null }));
 
     try {
+      // --- SERVER FUNCTION OPTION (Active) ---
+      const data = await askLumenAction(
+        content,
+        tone,
+        buildCoachContext({ expenses, budgets, currency, selectedDate: new Date() })
+      );
+
+      /*
+      // --- REST API ROUTE OPTION (Current default) ---
       const response = await fetch("/api/ai/chat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -52,6 +62,8 @@ export const useCoachStore = create<CoachState>((set) => ({
 
       if (!response.ok) throw new Error("AI request failed");
       const data = (await response.json()) as { message?: string };
+      */
+
       const assistantMessage: ChatMessage = {
         id: `assistant-${Date.now()}`,
         role: "assistant",

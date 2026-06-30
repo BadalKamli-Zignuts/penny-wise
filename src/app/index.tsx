@@ -7,6 +7,8 @@ import { useSettingsStore } from "../features/settings/store";
 export default function Index() {
   // Initialise from the synchronous hasHydrated() check so we don't flash
   // a redirect if hydration already completed (e.g. hot reload / fast refresh).
+  useSettingsStore.setState({ onboardingComplete: false });
+
   const [hydrated, setHydrated] = useState(
     () => useSettingsStore.persist.hasHydrated()
   );

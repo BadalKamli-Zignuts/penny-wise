@@ -11,13 +11,10 @@ export const styles = StyleSheet.create({
   },
   scrollContent: {
     flexGrow: 1,
-    justifyContent: "flex-end",
   },
   sheet: {
     borderTopLeftRadius: 32,
     borderTopRightRadius: 32,
-    borderColor: colors.border,
-    borderTopWidth: 1,
     padding: 24,
     gap: 16,
     paddingBottom: 40,

@@ -128,7 +128,7 @@ export const screenStyles = StyleSheet.create({
 });
 
 export const modalStyles = StyleSheet.create({
-  overlay: { flex: 1, justifyContent: "flex-end" },
+  overlay: { flex: 1 },
   backdrop: {
     ...StyleSheet.absoluteFillObject,
     backgroundColor: "rgba(0,0,0,0.6)",
@@ -141,6 +141,7 @@ export const modalStyles = StyleSheet.create({
     borderTopWidth: 1,
     borderColor: colors.border,
     gap: 16,
+    minHeight: "70%",
     maxHeight: "85%",
   },
   handle: {

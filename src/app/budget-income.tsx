@@ -445,7 +445,7 @@ const s = StyleSheet.create({
 const m = StyleSheet.create({
   overlay: { flex: 1, justifyContent: "flex-end" },
   backdrop: { ...StyleSheet.absoluteFillObject, backgroundColor: "rgba(0,0,0,0.6)" },
-  modal: { backgroundColor: colors.card, borderTopLeftRadius: 28, borderTopRightRadius: 28, padding: 24, borderTopWidth: 1, borderColor: colors.border, gap: 16, maxHeight: "85%" },
+  modal: { backgroundColor: colors.card, borderTopLeftRadius: 28, borderTopRightRadius: 28, padding: 24, borderTopWidth: 1, borderColor: colors.border, gap: 16, minHeight: "65%" },
   handle: { width: 36, height: 4, borderRadius: 2, backgroundColor: "rgba(255,255,255,0.2)", alignSelf: "center", marginBottom: 8 },
   modalTitle: { color: colors.primaryText, fontSize: 22, fontWeight: "900", textAlign: "center" },
   amountWrap: { flexDirection: "row", justifyContent: "center", alignItems: "center", gap: 8 },

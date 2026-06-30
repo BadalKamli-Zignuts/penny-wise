@@ -80,12 +80,17 @@ src/
 Follow these steps to run Penny Wise locally on your development machine:
 
 ### Prerequisites
-Make sure you have [Node.js](https://nodejs.org/) installed (v18+ recommended) and the Expo Go app installed on your iOS/Android device (or have simulator/emulator set up).
+* **Node.js**: Make sure you have **Node.js >= 20.19.4** installed (RSC/Server Functions require this version or higher to compile).
+* **Device / Emulator**: Install the Expo Go app on your physical iOS/Android device, or set up a local simulator/emulator.
 
 ### 1. Clone & Install Dependencies
+Install the package dependencies, including the peer package dependency required for React Server Functions:
 ```bash
-# Install package dependencies
+# Install core package dependencies
 npm install
+
+# Install the server dom package with legacy peer deps to resolve React 19 dependency tree conflicts
+npm install react-server-dom-webpack --legacy-peer-deps
 ```
 
 ### 2. Configure Environment Variables
@@ -117,7 +122,7 @@ GROQ_MODEL=llama3-70b-8192
 ```
 
 > [!IMPORTANT]
-> The `GROQ_API_KEY` is referenced only inside `src/app/api/ai/*` server files. It is never loaded into the client bundle, keeping your API key safe.
+> The `GROQ_API_KEY` is referenced only in server-side files (like [chat+api.ts](file:///Users/ztlab131/Desktop/penny-wise-main/src/app/api/ai/chat+api.ts) or the server function [actions.ts](file:///Users/ztlab131/Desktop/penny-wise-main/src/features/coach/actions.ts)). It is never loaded into the client bundle, keeping your API key safe.
 
 ### 3. Run the App
 Launch the Expo development server:
@@ -140,3 +145,22 @@ Run the following commands inside the root directory to verify code health:
 - **Linting**: `npm run lint` (Checks project syntax and format conventions)
 
 ---
+
+## 💡 Developer Notes
+
+### Expo Server Functions (React Server Components)
+We use **Expo Server Functions** (`"use server"`) to power the AI Coach chat. This feature is enabled in [app.json](file:///Users/ztlab131/Desktop/penny-wise-main/app.json) by:
+- Setting `web.output` to `"server"` (instead of `"static"`).
+- Adding `reactServerFunctions: true` to the `experiments` object.
+
+If you need to switch back to traditional REST API routes, you can toggle the implementation inside `sendMessage` in [store.ts](file:///Users/ztlab131/Desktop/penny-wise-main/src/features/coach/store.ts).
+
+### Resetting Onboarding
+Because the onboarding screen persists its completion state under `onboardingComplete` in `AsyncStorage`, it only runs once per device/installation. 
+
+To reset it for testing, choose one of the following options:
+1. **Programmatic Reset**: Temporarily add the following line inside `src/app/index.tsx`:
+   ```typescript
+   useSettingsStore.setState({ onboardingComplete: false });
+   ```
+2. **Clear Cache**: In Expo Go, long-press the project and select **Clear client data**. On emulators, clear the app's cache/storage from app settings.
